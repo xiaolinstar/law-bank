@@ -1,0 +1,647 @@
+CREATE DATABASE IF NOT EXISTS `bank`;
+
+USE `bank`;
+
+DROP TABLE IF EXISTS `slip`;
+
+CREATE TABLE `slip` (
+  `交易卡号` VARCHAR(100) DEFAULT NULL COMMENT '交易卡号',
+  `交易账号` VARCHAR(100) DEFAULT NULL COMMENT '交易账号',
+  `交易户名` VARCHAR(100) DEFAULT NULL COMMENT '交易户名',
+  `交易证件号码` VARCHAR(100) DEFAULT NULL COMMENT '交易证件号码',
+  `交易时间` VARCHAR(100) DEFAULT NULL COMMENT '交易时间',
+  `交易金额` DECIMAL(18, 2) DEFAULT NULL COMMENT '交易金额',
+  `交易余额` DECIMAL(18, 2) DEFAULT NULL COMMENT '交易余额',
+  `收付标志` CHAR(2) DEFAULT NULL COMMENT '收付标志（出、入）',
+  `交易对手账卡号` VARCHAR(50) DEFAULT NULL COMMENT '交易对手账卡号',
+  `现金标志` VARCHAR(50) DEFAULT NULL COMMENT '现金交易',
+  `对手户名` VARCHAR(255) DEFAULT NULL COMMENT '对手户名',
+  `对手身份证号` VARCHAR(50) DEFAULT NULL COMMENT '对手身份证号',
+  `对手开户银行` VARCHAR(100) DEFAULT NULL COMMENT '对手开户银行',
+  `摘要说明` VARCHAR(200) DEFAULT NULL COMMENT '摘要说明',
+  `交易币种` VARCHAR(10) DEFAULT NULL COMMENT '交易币种',
+  `交易网点名称` VARCHAR(100) DEFAULT NULL COMMENT '交易网点名称',
+  `交易发生地` VARCHAR(100) DEFAULT NULL COMMENT '交易发生地',
+  `交易是否成功` CHAR(5) DEFAULT NULL COMMENT '交易是否成功（01）',
+  `传票号` VARCHAR(50) DEFAULT NULL COMMENT '传票号',
+  `IP地址` VARCHAR(50) DEFAULT NULL COMMENT 'IP地址',
+  `MAC地址` VARCHAR(100) DEFAULT NULL COMMENT 'MAC地址',
+  `对手交易余额` DECIMAL(18, 2) DEFAULT NULL COMMENT '对手交易余额',
+  `交易流水号` VARCHAR(100) DEFAULT NULL COMMENT '交易流水号',
+  `日志号` VARCHAR(50) DEFAULT NULL COMMENT '日志号',
+  `凭证种类` VARCHAR(50) DEFAULT NULL COMMENT '凭证种类',
+  `凭证号` VARCHAR(50) DEFAULT NULL COMMENT '凭证号',
+  `交易柜员号` VARCHAR(50) DEFAULT NULL COMMENT '交易柜员号',
+  `备注` VARCHAR(200) DEFAULT NULL COMMENT '备注',
+  `商户名称` VARCHAR(100) DEFAULT NULL COMMENT '商户名称',
+  `商户代码` VARCHAR(50) DEFAULT NULL COMMENT '商户代码',
+  `交易类型` VARCHAR(50) DEFAULT NULL COMMENT '交易类型'
+#   PRIMARY KEY (`交易流水号`, `交易账号`) -- 假设交易流水号是唯一标识
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='交易流水信息表';
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/中国银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/农业银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/四川农信_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/工商银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/建设银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/民生银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/泰隆银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/浦发银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/邮政储蓄银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第七批流水/中国银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第七批流水/交通银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第七批流水/光大银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第七批流水/农业银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第七批流水/华夏银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第七批流水/吉林农信_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第七批流水/吉林银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第七批流水/工商银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第七批流水/建设银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第七批流水/招商银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第七批流水/浦发银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/中信银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/中国银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/交通银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/兴业银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/农业银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/前海微众银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/北京银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/华夏银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/吉林银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/工商银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/平安银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/建设银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/招商银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/河北银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/河南农商行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/泰隆银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/浦发银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/甘肃农信_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/福建农信_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/股权款_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/贵州农信_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/中信银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/中原银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/中国银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/交通银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/农业银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/北京农商_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/工商银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/平安银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/广发银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/建设银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/招商银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/民生银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/河北银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/泰隆银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/稠州银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/网商银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/邮储银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第五批流水/中国银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第五批流水/农行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第五批流水/前海微众银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第五批流水/工商银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第五批流水/平安银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第五批流水/建设银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第五批流水/江苏农信_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第五批流水/河南农商行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第五批流水/泰隆银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第五批流水/稠州银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第五批流水/网商银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第五批流水/邮储银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第四批流水/中国银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第四批流水/交通银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第四批流水/农业银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第四批流水/平安银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第四批流水/建设银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/第四批流水/招商银行_交易流水.csv'
+INTO TABLE slip
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;

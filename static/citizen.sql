@@ -1,0 +1,128 @@
+CREATE DATABASE IF NOT EXISTS `bank`;
+
+USE bank;
+
+
+DROP TABLE IF EXISTS `citizen`;
+CREATE TABLE `citizen` (
+  `证照类型` VARCHAR(50) DEFAULT NULL COMMENT '证照类型',
+  `证照号码` VARCHAR(50) NOT NULL COMMENT '证照号码',
+  `住址地址` VARCHAR(200) DEFAULT NULL COMMENT '住址地址',
+  `单位地址` VARCHAR(200) DEFAULT NULL COMMENT '单位地址',
+  `联系电话` VARCHAR(20) DEFAULT NULL COMMENT '联系电话',
+  `联系手机` VARCHAR(20) DEFAULT NULL COMMENT '联系手机',
+  `单位电话` VARCHAR(20) DEFAULT NULL COMMENT '单位电话',
+  `住宅电话` VARCHAR(20) DEFAULT NULL COMMENT '住宅电话',
+  `工作单位` VARCHAR(100) DEFAULT NULL COMMENT '工作单位',
+  `邮箱地址` VARCHAR(100) DEFAULT NULL COMMENT '邮箱地址',
+  `代办人姓名` VARCHAR(100) DEFAULT NULL COMMENT '代办人姓名',
+  `代办人证件类型` VARCHAR(50) DEFAULT NULL COMMENT '代办人证件类型',
+  `代办人证件号码` VARCHAR(50) DEFAULT NULL COMMENT '代办人证件号码',
+  `国税纳税号` VARCHAR(50) DEFAULT NULL COMMENT '国税纳税号',
+  `地税纳税号` VARCHAR(50) DEFAULT NULL COMMENT '地税纳税号',
+  `法人代表` VARCHAR(100) DEFAULT NULL COMMENT '法人代表',
+  `法人代表证件类型` VARCHAR(50) DEFAULT NULL COMMENT '法人代表证件类型',
+  `法人代表证件号码` VARCHAR(50) DEFAULT NULL COMMENT '法人代表证件号码',
+  `出生日期` VARCHAR(50) DEFAULT NULL COMMENT '出生日期',
+  `户籍地址` VARCHAR(200) DEFAULT NULL COMMENT '户籍地址',
+  `客户工商执照号码` VARCHAR(50) DEFAULT NULL COMMENT '客户工商执照号码'
+#   PRIMARY KEY (`证照号码`) -- 假设证照号码是唯一标识
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='银行账户信息表';
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/中国银行_公民身份.csv'
+INTO TABLE citizen
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/农业银行_公民身份.csv'
+INTO TABLE citizen
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/四川农信_公民身份.csv'
+INTO TABLE citizen
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/工商银行_公民身份.csv'
+INTO TABLE citizen
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/建设银行_公民身份.csv'
+INTO TABLE citizen
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/民生银行_公民身份.csv'
+INTO TABLE citizen
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/泰隆银行_公民身份.csv'
+INTO TABLE citizen
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/浦发银行_公民身份.csv'
+INTO TABLE citizen
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/第一批流水/邮政储蓄银行_公民身份.csv'
+INTO TABLE citizen
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/第二批流水/公民身份.csv'
+INTO TABLE citizen
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/第三批流水/公民身份.csv'
+INTO TABLE citizen
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/第四批流水/公民身份.csv'
+INTO TABLE citizen
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/第五批流水/公民身份.csv'
+INTO TABLE citizen
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/第七批流水/公民身份.csv'
+INTO TABLE citizen
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
